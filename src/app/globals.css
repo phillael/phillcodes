@@ -1,63 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: 220 80% 5%;
-  --foreground: 0 0% 98%;
-  --card: 220 70% 10%;
-  --card-foreground: 0 0% 98%;
-  --popover: 220 70% 10%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 280 100% 50%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 180 100% 50%;
-  --secondary-foreground: 220 80% 5%;
-  --muted: 220 70% 15%;
-  --muted-foreground: 220 10% 70%;
-  --accent: 320 100% 60%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 220 70% 15%;
-  --input: 220 70% 15%;
-  --ring: 280 100% 50%;
+  --background: 280 10% 5%; /* Muted black with a hint of purple */
+  --foreground: 302 100% 95%; /* #f887ff */
+
+  --card: 280 10% 10%; /* Slightly lighter than background */
+  --card-foreground: 302 100% 95%; /* #f887ff */
+
+  --popover: 280 10% 10%; /* Same as card */
+  --popover-foreground: 302 100% 95%; /* #f887ff */
+
+  --primary: 302 100% 95%; /* #f887ff */
+  --primary-foreground: 280 10% 5%; /* Same as background */
+
+  --secondary: 339 100% 43%; /* #da004e */
+  --secondary-foreground: 302 100% 95%; /* #f887ff */
+
+  --muted: 339 100% 26%; /* #860029 */
+  --muted-foreground: 302 100% 95%; /* #f887ff */
+
+  --accent: 264 54% 25%; /* #321450 */
+  --accent-foreground: 302 100% 95%; /* #f887ff */
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 302 100% 95%; /* #f887ff */
+
+  --border: 339 100% 43%; /* #da004e */
+  --input: 339 100% 43%; /* #da004e */
+  --ring: 302 100% 95%; /* #f887ff */
+
+  --radius: 0.5rem;
+
+  --font-heading: 'Audiowide', cursive;
+  --font-body: 'Share Tech Mono', monospace;
 }
 
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: 'VT323', monospace;
+  font-family: var(--font-body);
 }
 
-@keyframes neonGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 2px #ff00ff) drop-shadow(0 0 4px #ff00ff) drop-shadow(0 0 6px #ff00ff);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+@keyframes neon-glow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px hsl(var(--primary)),
+      0 0 82px hsl(var(--primary)),
+      0 0 92px hsl(var(--primary)),
+      0 0 102px hsl(var(--primary)),
+      0 0 151px hsl(var(--primary));
   }
   50% {
-    filter: drop-shadow(0 0 2px #00ffff) drop-shadow(0 0 4px #00ffff) drop-shadow(0 0 6px #00ffff);
+    text-shadow:
+      0 0 4px #fff,
+      0 0 7px #fff,
+      0 0 14px #fff,
+      0 0 28px hsl(var(--primary)),
+      0 0 55px hsl(var(--primary)),
+      0 0 62px hsl(var(--primary)),
+      0 0 68px hsl(var(--primary)),
+      0 0 101px hsl(var(--primary));
   }
 }
 
-.neon-glow {
-  animation: neonGlow 4s ease-in-out infinite;
+.neon-text {
+  animation: neon-glow 2.5s ease-in-out infinite alternate;
 }
 
-@keyframes scroll {
+@keyframes border-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 5px hsl(var(--secondary)),
+      0 0 10px hsl(var(--secondary)),
+      0 0 15px hsl(var(--secondary)),
+      0 0 20px hsl(var(--secondary));
+  }
+  50% {
+    box-shadow:
+      0 0 10px hsl(var(--secondary)),
+      0 0 20px hsl(var(--secondary)),
+      0 0 30px hsl(var(--secondary)),
+      0 0 40px hsl(var(--secondary));
+  }
+}
+
+@keyframes border-flow {
   0% {
-    transform: translateY(0);
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    transform: translateY(-50%);
+    background-position: 0% 50%;
   }
 }
 
-.animated-background {
-  animation: scroll 20s linear infinite;
+.cyberpunk-card {
+  position: relative;
+  background: hsl(var(--card));
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
-.animated-background svg {
-  min-height: 200%;
+.cyberpunk-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    hsl(var(--secondary)),
+    hsl(var(--primary)),
+    hsl(var(--accent)),
+    hsl(var(--secondary))
+  );
+  background-size: 400% 400%;
+  z-index: -1;
+  animation:
+    border-flow 3s ease infinite,
+    border-glow 1.5s ease-in-out infinite;
 }
 
-/* Add more custom styles as needed */
+.tech-badge {
+  background: linear-gradient(
+    45deg,
+    hsl(var(--secondary)),
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+  background-size: 200% 200%;
+  animation: border-flow 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+.card-hover-effect {
+  transition: all 0.3s ease-in-out;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+}

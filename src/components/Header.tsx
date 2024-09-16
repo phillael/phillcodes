@@ -3,11 +3,15 @@ import Nav from './Nav'
 
 const Header = () => {
   return (
-    <div>
-      <h1 className="text-4xl font-bold mb-4 neon-glow">Phill Aelony</h1>
-      <p className="mb-6">Software Engineer | React | TypeScript | Next.js</p>
+    <header className="mb-6">
+      <h1 className="text-4xl font-bold mb-4 glow-text font-montserrat">
+        Phill Aelony
+      </h1>
+      <p className="mb-6 text-secondary">
+        Software Engineer | React | TypeScript | Next.js
+      </p>
       <Nav />
-    </div>
+    </header>
   )
 }
 

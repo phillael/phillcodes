@@ -7,6 +7,7 @@ interface IconButtonProps {
   href: string
   label: string
   download?: boolean
+  className?: string
 }
 
 export function IconButton({
@@ -14,9 +15,10 @@ export function IconButton({
   href,
   label,
   download,
+  className,
 }: IconButtonProps) {
   return (
-    <Button variant="ghost" size="icon" asChild>
+    <Button variant="ghost" size="icon" className={className} asChild>
       <a
         href={href}
         target={download ? undefined : '_blank'}

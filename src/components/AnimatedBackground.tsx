@@ -1,64 +1,100 @@
-import React from 'react'
+'use client'
+
+import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function AnimatedBackground() {
+  const [isClient, setIsClient] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    setIsClient(true)
+    const updateMousePosition = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener('mousemove', updateMousePosition)
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition)
+    }
+  }, [])
+
+  const text = 'Phill Aelony'
+
+  if (!isClient) return null
+
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#010b19]">
-      <div className="animated-background">
-        <svg
-          className="absolute inset-0 h-full w-full"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1000 1000"
+    <div className="fixed inset-0 overflow-hidden bg-black">
+      <AnimatePresence>
+        <motion.svg
+          key="animated-background"
+          className="w-full h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
         >
           <defs>
-            <linearGradient
-              id="neon-gradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#ff00ff">
-                <animate
-                  attributeName="stop-color"
-                  values="#ff00ff; #00ffff; #ff00ff"
-                  dur="4s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-              <stop offset="100%" stopColor="#00ffff">
-                <animate
-                  attributeName="stop-color"
-                  values="#00ffff; #ff00ff; #00ffff"
-                  dur="4s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
           </defs>
-          <pattern
-            id="name-pattern"
-            x="0"
-            y="0"
-            width="300"
-            height="200"
-            patternUnits="userSpaceOnUse"
-          >
-            <text
+          {[...Array(3)].map((_, index) => (
+            <motion.text
+              key={index}
               x="50%"
               y="50%"
-              fontSize="36"
-              fontFamily="'VT323', monospace"
-              fill="url(#neon-gradient)"
               textAnchor="middle"
-              dominantBaseline="middle"
-              className="neon-glow"
+              fontSize={`${10 - index * 0.5}vw`}
+              fontFamily="var(--font-montserrat), sans-serif"
+              fontWeight="bold"
+              fill="none"
+              stroke={`rgba(255,255,255,${0.1 - index * 0.03})`}
+              strokeWidth="0.5"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: ['-2%', '2%', '-2%'],
+                rotate: [-1, 1, -1],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: 'easeInOut',
+                delay: index * 0.2,
+              }}
+              style={{
+                filter: 'url(#glow)',
+                transform: `translate(${mousePosition.x * 0.02 * (3 - index)}px, ${mousePosition.y * 0.02 * (3 - index)}px)`,
+              }}
             >
-              Phill Aelony
-            </text>
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#name-pattern)" />
-        </svg>
-      </div>
+              {text}
+            </motion.text>
+          ))}
+          <motion.circle
+            cx="50%"
+            cy="50%"
+            r="30%"
+            fill="none"
+            stroke="rgba(255,255,255,0.05)"
+            strokeWidth="0.5"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.1, 0.3],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          />
+        </motion.svg>
+      </AnimatePresence>
     </div>
   )
 }
