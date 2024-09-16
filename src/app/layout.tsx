@@ -1,13 +1,21 @@
-import { VT323 } from 'next/font/google'
-import AnimatedBackground from '@/components/AnimatedBackground'
+import { Montserrat, Roboto } from 'next/font/google'
 import MusicPlayer from '@/components/MusicPlayer'
 import '@/app/globals.css'
 
-const vt323 = VT323({ subsets: ['latin'], weight: '400' })
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+})
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-roboto',
+})
 
 export const metadata = {
-  title: 'Phill Aelony - Retro Portfolio',
-  description: 'A retro-styled portfolio showcasing my skills and projects',
+  title: 'Phill Aelony - Space Portfolio',
+  description: 'A space-themed portfolio showcasing my skills and projects',
 }
 
 export default function RootLayout({
@@ -16,9 +24,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${vt323.className} text-foreground`}>
-        <AnimatedBackground />
+    <html lang="en" className={`${montserrat.variable} ${roboto.variable}`}>
+      <body className="font-roboto text-foreground">
         <div className="relative z-10 flex flex-col md:flex-row min-h-screen">
           {children}
         </div>
