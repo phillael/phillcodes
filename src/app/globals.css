@@ -1,36 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: 280 10% 5%; /* Muted black with a hint of purple */
-  --foreground: 302 100% 95%; /* #f887ff */
+  --background: 280 10% 3%;
+  --foreground: 302 100% 95%;
 
-  --card: 280 10% 10%; /* Slightly lighter than background */
-  --card-foreground: 302 100% 95%; /* #f887ff */
+  --card: 280 10% 8%;
+  --card-foreground: 302 100% 95%;
 
-  --popover: 280 10% 10%; /* Same as card */
-  --popover-foreground: 302 100% 95%; /* #f887ff */
+  --popover: 280 10% 8%;
+  --popover-foreground: 302 100% 95%;
 
-  --primary: 302 100% 95%; /* #f887ff */
-  --primary-foreground: 280 10% 5%; /* Same as background */
+  --primary: 302 100% 95%;
+  --primary-foreground: 280 10% 3%;
 
-  --secondary: 339 100% 43%; /* #da004e */
-  --secondary-foreground: 302 100% 95%; /* #f887ff */
+  --secondary: 339 100% 43%;
+  --secondary-foreground: 302 100% 95%;
 
-  --muted: 339 100% 26%; /* #860029 */
-  --muted-foreground: 302 100% 95%; /* #f887ff */
+  --muted: 339 100% 26%;
+  --muted-foreground: 302 100% 95%;
 
-  --accent: 264 54% 25%; /* #321450 */
-  --accent-foreground: 302 100% 95%; /* #f887ff */
+  --accent: 264 54% 25%;
+  --accent-foreground: 302 100% 95%;
 
   --destructive: 0 84% 60%;
-  --destructive-foreground: 302 100% 95%; /* #f887ff */
+  --destructive-foreground: 302 100% 95%;
 
-  --border: 339 100% 43%; /* #da004e */
-  --input: 339 100% 43%; /* #da004e */
-  --ring: 302 100% 95%; /* #f887ff */
+  --border: 339 100% 43%;
+  --input: 339 100% 43%;
+  --ring: 302 100% 95%;
 
   --radius: 0.5rem;
 
@@ -39,9 +40,14 @@
 }
 
 body {
-  background-color: hsl(var(--background));
+  background: linear-gradient(
+    to bottom right,
+    hsl(0, 0%, 0%),
+    hsl(265, 66%, 17%)
+  );
   color: hsl(var(--foreground));
   font-family: var(--font-body);
+  min-height: 100vh;
 }
 
 h1,
@@ -51,116 +57,56 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 400;
 }
 
-@keyframes neon-glow {
-  0%,
-  100% {
-    text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-      0 0 42px hsl(var(--primary)),
-      0 0 82px hsl(var(--primary)),
-      0 0 92px hsl(var(--primary)),
-      0 0 102px hsl(var(--primary)),
-      0 0 151px hsl(var(--primary));
-  }
-  50% {
-    text-shadow:
-      0 0 4px #fff,
-      0 0 7px #fff,
-      0 0 14px #fff,
-      0 0 28px hsl(var(--primary)),
-      0 0 55px hsl(var(--primary)),
-      0 0 62px hsl(var(--primary)),
-      0 0 68px hsl(var(--primary)),
-      0 0 101px hsl(var(--primary));
-  }
+h2 {
+  font-size: xx-large;
+  margin-bottom: 16px;
 }
 
 .neon-text {
-  animation: neon-glow 2.5s ease-in-out infinite alternate;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #020de1,
+    0 0 21px #ff2600,
+    0 0 42px hsl(var(--primary)),
+    0 0 82px hsl(var(--primary));
 }
 
-@keyframes border-glow {
-  0%,
-  100% {
-    box-shadow:
-      0 0 5px hsl(var(--secondary)),
-      0 0 10px hsl(var(--secondary)),
-      0 0 15px hsl(var(--secondary)),
-      0 0 20px hsl(var(--secondary));
-  }
-  50% {
-    box-shadow:
-      0 0 10px hsl(var(--secondary)),
-      0 0 20px hsl(var(--secondary)),
-      0 0 30px hsl(var(--secondary)),
-      0 0 40px hsl(var(--secondary));
-  }
-}
-
-@keyframes border-flow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.cyberpunk-card {
-  position: relative;
+.experience-card-hover {
   background: hsl(var(--card));
-  border-radius: var(--radius);
-  overflow: hidden;
+  border: 2px solid hsl(var(--secondary));
+  box-shadow:
+    0 0 10px hsl(var(--secondary)),
+    0 0 20px hsl(var(--secondary));
 }
 
-.cyberpunk-card::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(
-    45deg,
-    hsl(var(--secondary)),
-    hsl(var(--primary)),
-    hsl(var(--accent)),
-    hsl(var(--secondary))
-  );
-  background-size: 400% 400%;
-  z-index: -1;
-  animation:
-    border-flow 3s ease infinite,
-    border-glow 1.5s ease-in-out infinite;
-}
+/* .tech-pill {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  display: inline-block;
+} */
 
-.tech-badge {
-  background: linear-gradient(
-    45deg,
-    hsl(var(--secondary)),
-    hsl(var(--primary)),
-    hsl(var(--accent))
-  );
-  background-size: 200% 200%;
-  animation: border-flow 3s ease infinite;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: bold;
+.experience-card-hover .tech-pill {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
 }
 
 .card-hover-effect {
-  transition: all 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
 }
 
 .card-hover-effect:hover {
   transform: translateY(-5px);
+  border-color: hsl(var(--secondary));
+  box-shadow:
+    0 0 10px hsl(var(--secondary)),
+    0 0 20px hsl(var(--secondary));
 }
