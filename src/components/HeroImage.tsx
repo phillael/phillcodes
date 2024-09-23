@@ -3,7 +3,7 @@ import { VortexWrapper } from './VortexWrapper'
 
 const HeroImage = () => {
   return (
-    <div className="mt-6 md:mt-0 flex flex-col items-center">
+    <div className="mt-6 md:mt-0 flex flex-col items-center custom-fade-in">
       <VortexWrapper>
         <div className="w-full aspect-square relative">
           <Image

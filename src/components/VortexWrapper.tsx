@@ -32,22 +32,36 @@ export const VortexWrapper: React.FC<VortexWrapperProps> = ({ children }) => {
         canvas.width,
         canvas.height
       )
-      gradient.addColorStop(0, 'rgba(218, 0, 78, 0.3)') // --secondary with lower opacity
-      gradient.addColorStop(0.5, 'rgba(248, 135, 255, 0.3)') // --primary with lower opacity
-      gradient.addColorStop(1, 'rgba(50, 20, 80, 0.3)') // --accent with lower opacity
+      gradient.addColorStop(0, 'rgba(0, 255, 255, 0.3)') // Cyan (primary) with lower opacity
+      gradient.addColorStop(0.5, 'rgba(255, 0, 255, 0.3)') // Magenta (accent) with lower opacity
+      gradient.addColorStop(1, 'rgba(0, 255, 0, 0.9)') // Green (muted) with lower opacity
 
       ctx.strokeStyle = gradient
       ctx.lineWidth = 2
 
-      for (let i = 0; i < 50; i++) {
+      const maxRadius = Math.max(canvas.width, canvas.height) / 2
+      const numCircles = 50
+
+      for (let i = 0; i < numCircles; i++) {
         ctx.beginPath()
-        const angle = (time * 0.001 + i * 0.1) % (Math.PI * 2)
-        const scale = i / 50 + 0.5 + Math.sin(time * 0.001 + i * 0.1) * 0.1
+        const baseAngle = (time * 0.001 + i * 0.1) % (Math.PI * 2)
+        const randomOffset = Math.sin(time * 0.002 + i) * 0.2
+        const angle = baseAngle + randomOffset
+        const scale = (i / numCircles) ** 1.5 // Non-linear scaling for more central density
+        const radius = maxRadius * scale
+
+        // Occasionally use dashed lines
+        if (Math.random() < 0.2) {
+          ctx.setLineDash([5, 5])
+        } else {
+          ctx.setLineDash([])
+        }
+
         ctx.ellipse(
           canvas.width / 2,
           canvas.height / 2,
-          (canvas.width / 2) * scale,
-          (canvas.height / 2) * scale,
+          radius,
+          radius * (0.8 + Math.sin(time * 0.003 + i * 0.2) * 0.2), // Varying ellipse shape
           angle,
           0,
           Math.PI * 2

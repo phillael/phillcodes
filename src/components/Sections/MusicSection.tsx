@@ -3,9 +3,7 @@ import React from 'react'
 const MusicSection = () => {
   return (
     <section id="music" className="mb-12">
-      <h2 className="text-2xl font-bold mb-4 font-montserrat glow-text">
-        Music
-      </h2>
+      <h2 className="neon-text-2">Music</h2>
       <p>
         When I'm not coding, you can find me creating electronic music. Here are
         some of my latest tracks:
