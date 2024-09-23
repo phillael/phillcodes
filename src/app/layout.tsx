@@ -1,16 +1,16 @@
-import { Montserrat, Roboto } from 'next/font/google'
-import MusicPlayer from '@/components/MusicPlayer'
+import { Audiowide, Jura } from 'next/font/google'
 import '@/app/globals.css'
 
-const montserrat = Montserrat({
+const audiowide = Audiowide({
+  weight: '400',
   subsets: ['latin'],
-  variable: '--font-montserrat',
+  variable: '--font-audiowide',
 })
 
-const roboto = Roboto({
-  subsets: ['latin'],
+const jura = Jura({
   weight: ['400', '700'],
-  variable: '--font-roboto',
+  subsets: ['latin'],
+  variable: '--font-jura',
 })
 
 export const metadata = {
@@ -24,12 +24,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${roboto.variable}`}>
-      <body className="font-roboto text-foreground">
+    <html lang="en" className={`${audiowide.variable} ${jura.variable}`}>
+      <body className="font-jura text-foreground">
         <div className="relative z-10 flex flex-col md:flex-row min-h-screen">
           {children}
         </div>
-        <MusicPlayer />
       </body>
     </html>
   )
