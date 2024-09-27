@@ -6,8 +6,8 @@ const Header = () => {
           Phill Aelony
         </h1>
         <h2 className="text-2xl">Software Engineer</h2>
+        {/* <p className="text-accent">React | TypeScript | NextJS | NodeJS</p> */}
       </div>
-      <p className="text-secondary">React | TypeScript | NextJS | NodeJS</p>
     </header>
   )
 }

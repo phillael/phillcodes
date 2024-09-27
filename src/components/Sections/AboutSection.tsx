@@ -4,7 +4,7 @@ const AboutSection = () => {
   return (
     <section id="about">
       <h2 className="neon-text-2">About Me</h2>
-      <div className="flex flex-col lg:flex-row gap-6 items-start p-6">
+      <div className="flex flex-col lg:flex-row gap-6 items-center p-6">
         <div className="w-full lg:w-[152px] flex-shrink-0">
           <div className="relative aspect-square w-full">
             <Image
@@ -19,7 +19,7 @@ const AboutSection = () => {
           <h3 className="text-lg font-semibold text-primary">
             The World's Greatest Software Engineer
           </h3>
-          <div className="text-md text-muted-foreground space-y-4">
+          <div className="text-md text-foreground space-y-4">
             <p>
               Behold! I am the one known as Phill Aelony. Specializing in React,
               TypeScript, and Next.js. With a keen eye for detail and a love for
