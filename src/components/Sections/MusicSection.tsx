@@ -1,8 +1,9 @@
 import React from 'react'
+import AnimatedSection from '../AnimatedSection'
 
 const MusicSection = () => {
   return (
-    <section id="music" className="mb-12">
+    <AnimatedSection id="music">
       <h2 className="neon-text-2">Music</h2>
       <p>
         When I'm not coding, you can find me creating electronic music. Here are
@@ -13,7 +14,7 @@ const MusicSection = () => {
         <li>Track 2 - Neon Nights</li>
         <li>Track 3 - Digital Horizon</li>
       </ul>
-    </section>
+    </AnimatedSection>
   )
 }
 

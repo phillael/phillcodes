@@ -1,3 +1,4 @@
+import AnimatedSection from '../AnimatedSection'
 import ExperienceCard from '../ExperienceCard'
 
 export default function ExperienceSection() {
@@ -74,7 +75,7 @@ export default function ExperienceSection() {
   ]
 
   return (
-    <section id="experience">
+    <AnimatedSection id="experience">
       <h2 className="neon-text-2">Professional Experience</h2>
       <div className="flex flex-col gap-6">
         {experiences.map((exp, index) => {
@@ -91,6 +92,6 @@ export default function ExperienceSection() {
           )
         })}
       </div>
-    </section>
+    </AnimatedSection>
   )
 }

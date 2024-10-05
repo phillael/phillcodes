@@ -1,8 +1,8 @@
-const Header = () => {
+const Heading = () => {
   return (
     <header className="mb-6 flex flex-col gap-4">
-      <div className="flex flex-col gap-1 ">
-        <h1 className=" text-5xl font-bold font-montserrat neon-text">
+      <div className="flex flex-col gap-1">
+        <h1 className="text-5xl font-bold font-montserrat neon-text">
           Phill Aelony
         </h1>
         <h2 className="text-2xl">Software Engineer</h2>
@@ -12,4 +12,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Heading
