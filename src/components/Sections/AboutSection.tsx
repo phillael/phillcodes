@@ -1,8 +1,9 @@
 import Image from 'next/image'
+import AnimatedSection from '../AnimatedSection'
 
 const AboutSection = () => {
   return (
-    <section id="about">
+    <AnimatedSection id="about">
       <h2 className="neon-text-2">About Me</h2>
       <div className="flex flex-col lg:flex-row gap-6 items-center p-6">
         <div className="w-full lg:w-[152px] flex-shrink-0">
@@ -35,7 +36,7 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   )
 }
 

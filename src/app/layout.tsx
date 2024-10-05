@@ -26,9 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${audiowide.variable} ${jura.variable}`}>
       <body className="font-jura text-foreground">
-        <div className="relative z-10 flex flex-col md:flex-row min-h-screen">
-          {children}
-        </div>
+        <div className="flex flex-col md:flex-row min-h-screen">{children}</div>
       </body>
     </html>
   )

@@ -1,6 +1,8 @@
+import AnimatedSection from '../AnimatedSection'
+
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="mb-12">
+    <AnimatedSection id="projects">
       <h2 className="neon-text-2">Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="border border-primary/30 rounded-lg p-4 bg-card/30">
@@ -28,7 +30,7 @@ const ProjectsSection = () => {
           <p>A brief description of Project 4 and its key features.</p>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   )
 }
 

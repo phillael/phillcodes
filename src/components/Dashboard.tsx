@@ -1,16 +1,14 @@
-import Header from './Header'
-import Nav from './Nav'
+import Header from './Heading'
 import HeroImage from './HeroImage'
 
 const Dashboard = () => {
   return (
-    <aside className="w-full md:w-1/3  p-8 pb-0 md:h-screen md:sticky md:top-0 flex flex-col justify-between bg-card/10">
-      <div>
+    <section className="h-screen flex flex-row basis-1/2">
+      <div className="flex-grow flex flex-col justify-between p-8 pb-0 md:overflow-hidden">
         <Header />
-        <Nav />
+        <HeroImage />
       </div>
-      <HeroImage />
-    </aside>
+    </section>
   )
 }
 
