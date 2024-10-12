@@ -15,9 +15,9 @@ const sectionVariants: Variants = {
     y: 0,
     opacity: 1,
     transition: {
-      type: 'spring',
-      bounce: 0.4,
-      duration: 0.8,
+      type: 'tween',
+      //   bounce: 0.4,
+      duration: 2,
     },
   },
 }
@@ -28,7 +28,7 @@ const AnimatedSection = ({ id, children }: AnimatedSectionProps) => {
       id={id}
       initial="offscreen"
       whileInView="onscreen"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: false, amount: 0.2 }}
       variants={sectionVariants}
     >
       {children}

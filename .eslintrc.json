@@ -9,7 +9,6 @@
         "singleQuote": true,
         "semi": false
       }
-    ],
-    "quotes": ["error", "single"]
+    ]
   }
 }

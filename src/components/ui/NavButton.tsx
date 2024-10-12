@@ -20,7 +20,7 @@ const NavButton = React.forwardRef<HTMLButtonElement, NavButtonProps>(
         ref={ref}
         variant={variant}
         className={cn(
-          'w-full justify-start gap-4 px-4',
+          'w-full justify-start gap-4 px-4 hover:bg-accent/40',
           isActive && 'bg-primary/10 text-primary',
           className
         )}

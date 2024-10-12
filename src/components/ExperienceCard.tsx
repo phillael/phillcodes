@@ -20,7 +20,7 @@ const ExperienceCard = ({
 }: ExperienceCardProps) => {
   return (
     <Card className="bg-transparent border-none">
-      <CardContent className="flex flex-col lg:flex-row p-6 gap-6 lg:items-baseline">
+      <CardContent className="flex flex-col lg:flex-row p-2 gap-6 lg:items-baseline">
         <div className="text-secondary flex-shrink-0 flex lg:flex-col h-full gap-4">
           <p>{dateRange}</p>
           <div className="relative aspect-square lg:w-full w-24 hidden lg:block h-full">
