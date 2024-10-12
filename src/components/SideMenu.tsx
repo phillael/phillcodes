@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useMediaQuery } from 'react-responsive'
 import { cn } from '@/lib/utils'
@@ -17,14 +17,19 @@ import {
   Menu,
   X,
 } from 'lucide-react'
-import { NavButton } from './ui/IconButton'
+import { NavButton } from './ui/NavButton'
 
 export default function SideMenu() {
   const isMobile = useMediaQuery({ maxWidth: 768 })
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const [isMounted, setIsMounted] = useState(false)
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), [])
 
   const menuItems = [
     { icon: Briefcase, label: 'Experience', id: 'experience' },
@@ -65,7 +70,7 @@ export default function SideMenu() {
     })
 
     return () => observer.disconnect()
-  }, [])
+  }, [menuItems])
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
