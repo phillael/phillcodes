@@ -1,25 +1,18 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence, PanInfo } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import AnimatedSection from '../../AnimatedSection'
 import { testimonials } from './testimonials'
+import GradientCard from '@/components/GradientCard'
 
 export default function TestimonialCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
   const constraintsRef = useRef(null)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      navigate(1)
-    }, 10000)
-
-    return () => clearInterval(interval)
-  }, [])
 
   const navigate = (newDirection: number) => {
     setDirection(newDirection)
@@ -64,7 +57,7 @@ export default function TestimonialCarousel() {
     <AnimatedSection id="testimonials">
       <h2 className="text-center mb-12 neon-text">Testimonials</h2>
       <div
-        className="overflow-hidden relative h-[500px] md:h-[400px] rounded-3xl "
+        className="overflow-hidden relative min-h-[500px] md:h-[400px] rounded-3xl "
         ref={constraintsRef}
       >
         <AnimatePresence initial={false} custom={direction}>
@@ -85,7 +78,7 @@ export default function TestimonialCarousel() {
             dragElastic={1}
             onDragEnd={handleDragEnd}
           >
-            <div className="bg-gradient-to-r from-card to-primary/5 p-8 shadow-2xl h-full overflow-y-auto transition-all duration-3000 ease-in-out hover:from-card hover:to-accent/5">
+            <GradientCard className="h-full">
               <div className="flex flex-col h-full gap-8">
                 <div className="flex items-center gap-8">
                   <div className="w-32 h-32 relative flex-shrink-0 rounded-full neon-border">
@@ -111,13 +104,15 @@ export default function TestimonialCarousel() {
                     </p>
                   </div>
                 </div>
-                <div className="flex-1 overflow-y-auto">
-                  <p className="text-sm mb-4">
-                    {testimonials[currentIndex].body}
-                  </p>
+                <div className="overflow-y-auto custom-scrollbar px-6">
+                  <blockquote>
+                    <p className="testimonial-text">
+                      {testimonials[currentIndex].body}
+                    </p>
+                  </blockquote>
                 </div>
               </div>
-            </div>
+            </GradientCard>
           </motion.div>
         </AnimatePresence>
       </div>

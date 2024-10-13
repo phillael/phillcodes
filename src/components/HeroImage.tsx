@@ -11,16 +11,15 @@ const HeroImage = () => {
         ease: 'easeIn',
         duration: 5,
       }}
-      className="mt-6 md:mt-0 flex flex-col items-center"
+      className="mt-6 lg:mt-0 flex flex-col flex-shrink min-h-0"
     >
       <VortexWrapper>
-        <div className="w-full aspect-square relative">
+        <div className="aspect-square relative">
           <Image
             src="/images/phill_llamas.png"
             alt="Phill Aelony with llamas in Ecuador"
             fill
             className={'object-cover rounded-r-full'}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
           />
         </div>
       </VortexWrapper>
