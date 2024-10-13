@@ -5,7 +5,7 @@ import TestimonialCarousel from './Sections/TestimonialSection/TestimonialSectio
 
 const ContentView = () => {
   return (
-    <main className="w-full md:h-screen md:overflow-y-auto">
+    <main className="w-full md:h-screen md:overflow-y-auto custom-scrollbar">
       <div className="max-w-4xl mx-auto p-4 md:p-8 flex flex-col gap-32">
         <AboutSection />
         <ExperienceSection />
