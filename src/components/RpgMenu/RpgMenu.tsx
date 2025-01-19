@@ -40,9 +40,9 @@ const RPGMenu: React.FC<RPGMenuProps> = ({ items }) => {
           className="flex-1 min-h-0 data-[state=active]:flex data-[state=active]:flex-col"
         >
           <ScrollArea className="flex-1 p-4">
-            <h4 className="mb-4 text-lg font-heading leading-none text-primary">
+            {/* <h4 className="mb-4 text-lg font-heading leading-none text-primary">
               {item.label}
-            </h4>
+            </h4> */}
             {item.children}
           </ScrollArea>
         </TabsContent>
