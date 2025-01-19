@@ -1,4 +1,4 @@
-import { Audiowide, Jura } from 'next/font/google'
+import { Audiowide, Nunito } from 'next/font/google'
 import '@/app/globals.css'
 
 const audiowide = Audiowide({
@@ -7,10 +7,10 @@ const audiowide = Audiowide({
   variable: '--font-audiowide',
 })
 
-const jura = Jura({
-  weight: ['400', '700'],
+const nunito = Nunito({
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-jura',
+  variable: '--font-nunito',
 })
 
 export const metadata = {
@@ -18,16 +18,14 @@ export const metadata = {
   description: 'A space-themed portfolio showcasing my skills and projects',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en" className={`${audiowide.variable} ${jura.variable}`}>
-      <body className="font-jura text-foreground">
+    <html lang="en" className={`${audiowide.variable} ${nunito.variable}`}>
+      <body className="font-nunito text-foreground">
         <div className="flex flex-col md:flex-row min-h-screen">{children}</div>
       </body>
     </html>
   )
 }
+
+export default RootLayout

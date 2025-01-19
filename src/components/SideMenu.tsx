@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { useMediaQuery } from 'react-responsive'
 import { cn } from '@/lib/utils'
@@ -23,27 +23,28 @@ export default function SideMenu() {
   const isMobile = useMediaQuery({ maxWidth: 768 })
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), [])
 
-  const menuItems = [
-    { icon: Briefcase, label: 'Experience', id: 'experience' },
-    { icon: FolderKanban, label: 'Projects', id: 'projects' },
-    { icon: Users, label: 'Testimonials', id: 'testimonials' },
-    { icon: Music, label: 'Music', id: 'music' },
-  ]
+  const menuItems = useMemo(
+    () => [
+      { icon: Briefcase, label: 'Experience', id: 'experience' },
+      { icon: FolderKanban, label: 'Projects', id: 'projects' },
+      { icon: Users, label: 'Testimonials', id: 'testimonials' },
+    ],
+    []
+  )
 
   const socialItems = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com/yourusername' },
+    {
+      icon: Github,
+      label: 'GitHub',
+      href: 'https://github.com/phillael',
+    },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/yourusername',
+      href: 'https://www.linkedin.com/in/phill-aelony/',
     },
   ]
 

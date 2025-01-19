@@ -21,8 +21,8 @@ const ExperienceCard = ({
   return (
     <Card className="bg-transparent border-none">
       <CardContent className="flex flex-col lg:flex-row p-2 gap-6 lg:items-baseline">
-        <div className="text-secondary flex-shrink-0 flex lg:flex-col h-full gap-4">
-          <p>{dateRange}</p>
+        <div className="flex-shrink-0 flex lg:flex-col h-full gap-4">
+          <p className="text-sm">{dateRange}</p>
           <div className="relative aspect-square lg:w-full w-24 hidden lg:block h-full">
             <Image
               src="/images/space_llama.png"
