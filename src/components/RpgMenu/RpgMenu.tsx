@@ -21,7 +21,7 @@ const RPGMenu: React.FC<RPGMenuProps> = ({ items }) => {
       defaultValue={items[0].id}
       className="font-body min-w-[375px] flex flex-col h-full"
     >
-      <TabsList className="grid w-full grid-cols-5 bg-card p-1 rounded-t-md flex-none">
+      <TabsList className="grid w-full grid-cols-4 bg-card p-1 rounded-t-md flex-none">
         {items.map((item) => (
           <TabsTrigger
             key={item.id}

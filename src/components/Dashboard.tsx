@@ -21,11 +21,6 @@ const menuItems = [
     children: <div>Skills</div>,
   },
   {
-    id: 'weapons',
-    label: 'Equip',
-    children: <div>Equip</div>,
-  },
-  {
     id: 'music',
     label: 'Music',
     children: <div>Music</div>,

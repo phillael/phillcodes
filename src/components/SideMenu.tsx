@@ -1,17 +1,14 @@
 'use client'
-import React, { useCallback, useEffect, useState, useMemo } from 'react'
+import { useCallback, useEffect, useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { useMediaQuery } from 'react-responsive'
 import { cn } from '@/lib/utils'
 
 import {
-  Moon,
-  Sun,
   ChevronRight,
   Briefcase,
   FolderKanban,
   Users,
-  Music,
   Github,
   Linkedin,
   Menu,
@@ -107,7 +104,6 @@ export default function SideMenu() {
             className={`transform transition-transform ${isOpen ? 'rotate-180' : ''}`}
           />
         )}
-        <NavButton icon={Sun} aria-label="Toggle dark mode" />
         {menuItems.map((item, index) => (
           <NavButton
             key={index}

@@ -5,7 +5,6 @@ const Heading = () => {
         <h1 className="text-5xl font-bold font-montserrat neon-text-green">
           Phill Aelony
         </h1>
-        {/* <h2 className="text-2xl">Software Engineer</h2> */}
       </div>
     </header>
   )

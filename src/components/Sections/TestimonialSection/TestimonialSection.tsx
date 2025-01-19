@@ -55,7 +55,7 @@ export default function TestimonialCarousel() {
 
   return (
     <AnimatedSection id="testimonials">
-      <h2 className="text-center mb-12 neon-text">Testimonials</h2>
+      <h2 className="text-center mb-12 neon-text-purple">Testimonials</h2>
       <div
         className="overflow-hidden relative min-h-[500px] md:h-[400px] rounded-3xl "
         ref={constraintsRef}
