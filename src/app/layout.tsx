@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { Audiowide, Nunito } from 'next/font/google'
 import '@/app/globals.css'
 
@@ -18,11 +19,13 @@ export const metadata = {
   description: 'A space-themed portfolio showcasing my skills and projects',
 }
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="en" className={`${audiowide.variable} ${nunito.variable}`}>
       <body className="font-nunito text-foreground">
-        <div className="flex flex-col md:flex-row min-h-screen">{children}</div>
+        <div className="flex flex-col md:flex-row md:h-screen w-full md:overflow-hidden">
+          {children}
+        </div>
       </body>
     </html>
   )

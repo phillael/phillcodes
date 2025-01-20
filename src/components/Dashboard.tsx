@@ -29,11 +29,11 @@ const menuItems = [
 
 const Dashboard = () => {
   return (
-    <section className="h-screen p-8 lg:basis-1/2">
+    <section className="min-h-screen md:h-full p-8 lg:basis-1/3">
       <div className="flex flex-col h-full gap-6">
         <Header />
-        <div className="flex-1 min-h-0">
-          <RPGMenu items={menuItems} />{' '}
+        <div className="flex-1 md:min-h-0">
+          <RPGMenu items={menuItems} />
         </div>
       </div>
     </section>
