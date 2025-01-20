@@ -1,38 +1,41 @@
-import { motion, Variants } from 'framer-motion'
-import React from 'react'
+'use client'
+
+import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
+import SectionWrapper from './SectionWrapper'
 
 interface AnimatedSectionProps {
-  id: string
   children: React.ReactNode
+  id: string
 }
 
-const sectionVariants: Variants = {
-  offscreen: {
-    y: 100,
-    opacity: 0,
-  },
-  onscreen: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: 'tween',
-      //   bounce: 0.4,
-      duration: 2,
-    },
-  },
-}
+const AnimatedSection = ({ children, id }: AnimatedSectionProps) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, {
+    margin: '-45% 0px -45% 0px',
+    once: false,
+  })
 
-const AnimatedSection = ({ id, children }: AnimatedSectionProps) => {
   return (
-    <motion.section
-      id={id}
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: false, amount: 0.2 }}
-      variants={sectionVariants}
-    >
-      {children}
-    </motion.section>
+    <SectionWrapper>
+      <motion.section
+        ref={ref}
+        id={id}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{
+          opacity: isInView ? 1 : 0,
+          y: isInView ? 0 : 50,
+        }}
+        transition={{
+          duration: 1,
+          ease: 'easeInOut',
+        }}
+        className="w-full"
+      >
+        {children}
+      </motion.section>
+    </SectionWrapper>
   )
 }
 

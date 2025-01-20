@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import AnimatedSection from '../AnimatedSection'
+import SectionTitle from '../ui/SectionTitle'
 
 const AboutSection = () => {
   return (
     <AnimatedSection id="about">
-      <h2 className="neon-text-purple">About Me</h2>
+      <SectionTitle>About Me</SectionTitle>
       <div className="flex flex-col lg:flex-row gap-6 items-center">
         <div className="w-full lg:w-[152px] flex-shrink-0">
           <div className="relative aspect-square w-full">

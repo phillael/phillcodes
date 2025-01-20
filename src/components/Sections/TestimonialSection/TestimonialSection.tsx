@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import AnimatedSection from '../../AnimatedSection'
 import { testimonials } from './testimonials'
 import GradientCard from '@/components/GradientCard'
+import SectionTitle from '@/components/ui/SectionTitle'
 
 export default function TestimonialCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -55,7 +56,7 @@ export default function TestimonialCarousel() {
 
   return (
     <AnimatedSection id="testimonials">
-      <h2 className="text-center mb-12 neon-text-purple">Testimonials</h2>
+      <SectionTitle>Testimonials</SectionTitle>
       <div
         className="overflow-hidden relative min-h-[500px] md:h-[400px] rounded-3xl "
         ref={constraintsRef}

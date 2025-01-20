@@ -1,6 +1,6 @@
 'use client'
-import { useCallback, useEffect, useState, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { useCallback, useState, useMemo } from 'react'
+import { motion, useScroll } from 'framer-motion'
 import { useMediaQuery } from 'react-responsive'
 import { cn } from '@/lib/utils'
 
@@ -19,7 +19,8 @@ import { NavButton } from './ui/NavButton'
 export default function SideMenu() {
   const isMobile = useMediaQuery({ maxWidth: 768 })
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
+  const { scrollY } = useScroll()
+  const [activeSection, setActiveSection] = useState('about')
 
   const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), [])
 
@@ -45,30 +46,24 @@ export default function SideMenu() {
     },
   ]
 
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    }
+  // Update active section based on scroll position
+  scrollY.on('change', (latest) => {
+    const sections = menuItems.map((item) => document.getElementById(item.id))
+    const viewportHeight = window.innerHeight
+    const currentPosition = latest + viewportHeight / 2
 
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id)
+    sections.forEach((section) => {
+      if (section) {
+        const { offsetTop, offsetHeight } = section
+        if (
+          currentPosition >= offsetTop &&
+          currentPosition < offsetTop + offsetHeight
+        ) {
+          setActiveSection(section.id)
         }
-      })
-    }
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions)
-
-    menuItems.forEach((item) => {
-      const element = document.getElementById(item.id)
-      if (element) observer.observe(element)
+      }
     })
-
-    return () => observer.disconnect()
-  }, [menuItems])
+  })
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
